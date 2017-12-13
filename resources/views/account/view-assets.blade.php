@@ -43,9 +43,21 @@ View Assets for  {{ $user->present()->fullName() }}
                     {{ $asset->model->name }}
                     @endif
                   </td>
-                  <td>{{ $asset->asset_tag }}</td>
-                  <td>{{ $asset->serial }}</td>
-                  <td>{{ $asset->name }}</td>
+                  <td>
+                    <a href="{{ url('/') }}/hardware/{{ $asset->id }}">
+                      {{ $asset->asset_tag }}
+                    </a>
+                  </td>
+                  <td>
+                    <a href="{{ url('/') }}/hardware/{{ $asset->id }}">
+                      {{ $asset->serial }}
+                    </a>
+                  </td>
+                  <td>
+                    <a href="{{ url('/') }}/hardware/{{ $asset->id }}">
+                      {{ $asset->name }}
+                    </a>
+                  </td>
                   <td>
                     @if (($asset->image) && ($asset->image!=''))
                       <img src="{{ url('/') }}/uploads/assets/{{ $asset->image }}" height="50" width="50">
@@ -98,7 +110,11 @@ View Assets for  {{ $user->present()->fullName() }}
             <tbody>
               @foreach ($user->licenses as $license)
               <tr>
-                <td>{{ $license->name }}</td>
+                <td>
+                  <a href="{{ url('/') }}/licenses/{{ $license->id }}">
+                    {{ $license->name }}
+                  </a>
+                </td>
                 <td>
                   @can('viewKeys', $license)
                     {{ mb_strimwidth($license->serial, 0, 50, "...") }}
@@ -148,7 +164,11 @@ View Assets for  {{ $user->present()->fullName() }}
             <tbody>
               @foreach ($user->consumables as $consumable)
               <tr>
-                <td>{{ $consumable->name }}</td>
+                <td>
+                  <a href="{{ url('/') }}/consumables/{{ $consumable->id }}">
+                    {{ $consumable->name }}
+                  </a>
+                </td>
               </tr>
               @endforeach
             </tbody>
@@ -193,7 +213,11 @@ View Assets for  {{ $user->present()->fullName() }}
             <tbody>
               @foreach ($user->accessories as $accessory)
               <tr>
-                <td>{{ $accessory->name }}</td>
+                <td>
+                  <a href="{{ url('/') }}/accessories/{{ $accessory->id }}">
+                    {{ $accessory->name }}
+                  </a>
+                </td>
               </tr>
               @endforeach
             </tbody>
